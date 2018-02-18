@@ -18,3 +18,6 @@ print("integrate squad   = {0}\nglobal error      = {1}".format(integral.squad(l
 
 print("integrate simpson = {0}\nglobal error      = {1}".format(integral.simpson(limits),
                              abs(integral.simpson(limits) - integrate_sin(limits))))
+
+print("integrate gauss   = {0}\nglobal error      = {1}".format(integral.gauss(limits),
+                             abs(integral.gauss(limits) - integrate_sin(limits))))
