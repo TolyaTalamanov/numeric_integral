@@ -21,3 +21,6 @@ print("integrate simpson = {0}\nglobal error      = {1}".format(integral.simpson
 
 print("integrate gauss   = {0}\nglobal error      = {1}".format(integral.gauss(limits),
                              abs(integral.gauss(limits) - integrate_sin(limits))))
+
+print("integrate montecarlo   = {0}\nglobal error      = {1}".format(integral.montecarlo(limits),
+                             abs(integral.montecarlo(limits) - integrate_sin(limits))))

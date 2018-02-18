@@ -1,4 +1,5 @@
 import numpy as np 
+import random 
 
 class Integrate:
 
@@ -22,31 +23,38 @@ class Integrate:
 
 
     def squad(self, limits):
-            step = (limits[1] - limits[0]) / self._count_points 
-            sum = 0
-            for x in np.arange(limits[0], limits[1], step):
-                sum += step * self._func(x + 0.5 * step) 
-            return sum				
+        step = (limits[1] - limits[0]) / self._count_points 
+        sum = 0
+        for x in np.arange(limits[0], limits[1], step):
+            sum += step * self._func(x + 0.5 * step) 
+        return sum				
 
     def trapeze(self, limits):
-            step = (limits[1] - limits[0]) / self._count_points
-            sum = 0
-            for x in np.arange(limits[0], limits[1], step):
-                sum += step * (self._func(x) + self._func(x + step)) / 2
-            return sum
+        step = (limits[1] - limits[0]) / self._count_points
+        sum = 0
+        for x in np.arange(limits[0], limits[1], step):
+            sum += step * (self._func(x) + self._func(x + step)) / 2
+        return sum
 
     def simpson(self, limits):
-            step = (limits[1] - limits[0]) / self._count_points
-            sum = 0
-            for x in np.arange(limits[0], limits[1], step):
-                sum += step / 6 * (self._func(x) + 4 * self._func(x + 0.5 * step) +
-                        self._func(x + step))
-            return sum		
+        step = (limits[1] - limits[0]) / self._count_points
+        sum = 0
+        for x in np.arange(limits[0], limits[1], step):
+            sum += step / 6 * (self._func(x) + 4 * self._func(x + 0.5 * step) +
+                    self._func(x + step))
+        return sum		
 
     def gauss(self, limits, nodes = 4):
-            h = (limits[1] - limits[0]) / 2
-            sum = 0
-            for i in range(nodes):
-                sum += self._A[nodes - 1][i] * self._func((limits[0] + limits[1]) / 2 +
-                        ((limits[1] - limits[0]) / 2) * self._T[nodes - 1][i])
-            return sum * h
+        h = (limits[1] - limits[0]) / 2
+        sum = 0
+        for i in range(nodes):
+            sum += self._A[nodes - 1][i] * self._func((limits[0] + limits[1]) / 2 +
+                    ((limits[1] - limits[0]) / 2) * self._T[nodes - 1][i])
+        return sum * h
+
+    def montecarlo(self, limits):
+        h = (limits[1] - limits[0]) / self._count_points 
+        sum = 0
+        for i in range(self._count_points):
+            sum += self._func(limits[0] + random.uniform(1, 0) * (limits[1] - limits[0]))
+        return sum * h
