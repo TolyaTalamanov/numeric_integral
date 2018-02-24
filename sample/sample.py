@@ -5,8 +5,9 @@ def integrate_sin(limits):
     return -cos(limits[1]) + cos(limits[0])
 
 sinx     = lambda x: sin(x)
-limits   = (1, 3)
+limits   = list(map(int, (input("Enter limits : ").split(' '))))
 integral = integrate.Integrate(sinx)
+
 
 print("exact meaning     = {0}".format(integrate_sin(limits)))
 
