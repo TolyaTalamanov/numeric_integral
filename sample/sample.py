@@ -1,12 +1,12 @@
 import lib.integrate as integrate 
-from math import sin, cos
+from math import sin, cos, exp
 
-def integrate_sin(limits):
-    return -cos(limits[1]) + cos(limits[0])
+def integrate_exp(limits):
+    return exp(limits[1]) - exp(limits[0])
 
-sinx     = lambda x: sin(x)
+expx     = lambda x: exp(x))
 limits   = list(map(int, (input("Введите пределы интегрирования через пробел : ").split(' '))))
-integral = integrate.Integrate(sinx)
+integral = integrate.Integrate(expx)
 
 
 print("Точное значение      = {0}\n".format(integrate_sin(limits)))
