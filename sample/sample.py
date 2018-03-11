@@ -9,6 +9,7 @@ limits   = list(map(int, (input("Enter limits : ").split(' '))))
 integral = integrate.Integrate(sinx)
 
 
+print("Function : sin(x)")
 print("exact meaning     = {0}\n".format(integrate_sin(limits)))
 
 print("integrate trapeze = {0}\nglobal error      = {1}\n".format(integral.trapeze(limits),
